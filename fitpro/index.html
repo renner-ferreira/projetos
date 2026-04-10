@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FitPro — Plataforma de Treino Inteligente</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== TELA DE LOGIN ===== -->
+<div id="login-screen" class="login-screen">
+  <div class="login-bg">
+    <div class="login-blob b1"></div>
+    <div class="login-blob b2"></div>
+  </div>
+  <div class="login-card">
+    <div class="login-logo">
+      <span class="logo-mark">FP</span>
+      <span class="logo-text">FitPro</span>
+    </div>
+    <h1 class="login-title">Bem-vindo de volta</h1>
+    <p class="login-sub">Sua plataforma de treino inteligente</p>
+
+    <div id="login-error" class="alert-error" style="display:none"></div>
+
+    <div class="form-group">
+      <label>E-mail</label>
+      <input type="email" id="login-email" placeholder="seu@email.com" value="joao@fitpro.com"/>
+    </div>
+    <div class="form-group">
+      <label>Senha</label>
+      <input type="password" id="login-password" placeholder="••••••••" value="123456"/>
+    </div>
+    <button class="btn-primary full-width" id="btn-login" onclick="doLogin()">Entrar</button>
+    <p class="login-hint">Demo: joao@fitpro.com / 123456</p>
+  </div>
+</div>
+
+<!-- ===== APP PRINCIPAL ===== -->
+<div id="app" style="display:none">
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <span class="logo-mark">FP</span>
+    <span class="logo-text">FitPro</span>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a href="#" class="nav-item active" data-page="dashboard">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      Dashboard
+    </a>
+    <a href="#" class="nav-item" data-page="treinos">
+      <svg viewBox="0 0 24 24"><path d="M6 4v16M18 4v16M2 8h4M18 8h4M2 16h4M18 16h4"/></svg>
+      Meus Treinos
+    </a>
+    <a href="#" class="nav-item" data-page="plano">
+      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      Plano Semanal
+    </a>
+    <a href="#" class="nav-item" data-page="dieta">
+      <svg viewBox="0 0 24 24"><path d="M12 2a9 9 0 0 1 9 9c0 5-9 13-9 13S3 16 3 11a9 9 0 0 1 9-9z"/><circle cx="12" cy="11" r="3"/></svg>
+      Dieta & Nutrição
+    </a>
+    <a href="#" class="nav-item" data-page="profissionais">
+      <svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0-3-3.85"/></svg>
+      Profissionais
+    </a>
+    <a href="#" class="nav-item" data-page="progresso">
+      <svg viewBox="0 0 24 24"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/></svg>
+      Progresso
+    </a>
+    <a href="#" class="nav-item" data-page="ia">
+      <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      IA Treino
+    </a>
+  </nav>
+
+  <div class="sidebar-footer">
+    <div class="user-card">
+      <div class="user-avatar" id="sidebar-avatar">JD</div>
+      <div class="user-info">
+        <span class="user-name" id="sidebar-name">João Dias</span>
+        <span class="user-plan" id="sidebar-plan">Plano Pro</span>
+      </div>
+    </div>
+    <button class="btn-logout" onclick="doLogout()" title="Sair">
+      <svg viewBox="0 0 24 24" width="18" height="18"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+    </button>
+  </div>
+</aside>
+
+<!-- MAIN CONTENT -->
+<main class="main-content">
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <button class="menu-toggle" onclick="document.getElementById('sidebar').classList.toggle('open')">
+      <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <div class="topbar-title">
+      <h1 id="page-title">Dashboard</h1>
+      <span id="page-subtitle">Carregando...</span>
+    </div>
+    <div class="topbar-actions">
+      <button class="btn-notify" onclick="toggleNotifications()">
+        <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <span class="notify-badge" id="notify-count">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- NOTIFICAÇÕES DROPDOWN -->
+  <div id="notifications-panel" class="notifications-panel" style="display:none">
+    <div class="notif-header">
+      <h3>Notificações</h3>
+      <button onclick="markAllRead()">Marcar todas lidas</button>
+    </div>
+    <div id="notif-list" class="notif-list">
+      <div class="notif-loading">Carregando...</div>
+    </div>
+  </div>
+
+  <!-- REST TIMER MODAL -->
+  <div id="rest-timer" class="rest-timer-overlay" style="display:none">
+    <div class="rest-timer-box">
+      <p class="rest-label">Descanso</p>
+      <div class="rest-countdown" id="rest-countdown">90</div>
+      <div class="rest-progress-ring">
+        <svg viewBox="0 0 80 80">
+          <circle cx="40" cy="40" r="34" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="6"/>
+          <circle id="rest-ring" cx="40" cy="40" r="34" fill="none" stroke="#00ff88" stroke-width="6"
+            stroke-dasharray="213.6" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 40 40)"/>
+        </svg>
+      </div>
+      <button class="btn-skip-rest" onclick="stopTimer()">Pular descanso</button>
+    </div>
+  </div>
+
+  <!-- PAGES -->
+  <div class="pages-wrapper">
+
+    <!-- ===== DASHBOARD ===== -->
+    <section class="page active" id="page-dashboard">
+      <div class="stats-row" id="stats-row">
+        <div class="stat-card skeleton"></div>
+        <div class="stat-card skeleton"></div>
+        <div class="stat-card skeleton"></div>
+        <div class="stat-card skeleton"></div>
+      </div>
+
+      <div class="dashboard-grid">
+        <!-- Treino de hoje -->
+        <div class="card card-treino-hoje">
+          <div class="card-header">
+            <h2>Treino de Hoje</h2>
+            <span class="badge badge-green" id="today-group">Carregando...</span>
+          </div>
+          <div class="exercise-list" id="today-exercises">
+            <div class="skeleton" style="height:64px;border-radius:12px;margin-bottom:8px"></div>
+            <div class="skeleton" style="height:64px;border-radius:12px;margin-bottom:8px"></div>
+            <div class="skeleton" style="height:64px;border-radius:12px"></div>
+          </div>
+          <button class="btn-primary full-width" id="btn-start-workout" onclick="startWorkout()">Iniciar Treino</button>
+        </div>
+
+        <!-- Dica do dia -->
+        <div class="card card-dica">
+          <div class="dica-header">
+            <span class="dica-icon">💡</span>
+            <h2>Dica do Dia</h2>
+          </div>
+          <p class="dica-text" id="dica-texto">Carregando dica...</p>
+          <div class="dica-author">
+            <div class="author-avatar" id="dica-avatar"></div>
+            <div>
+              <strong id="dica-author-name">—</strong>
+              <span id="dica-author-role">—</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Plano semanal mini -->
+        <div class="card card-semana">
+          <h2>Esta Semana</h2>
+          <div class="week-days" id="week-days-mini">
+            <div class="skeleton" style="height:70px;border-radius:10px;flex:1"></div>
+            <div class="skeleton" style="height:70px;border-radius:10px;flex:1"></div>
+            <div class="skeleton" style="height:70px;border-radius:10px;flex:1"></div>
+            <div class="skeleton" style="height:70px;border-radius:10px;flex:1"></div>
+            <div class="skeleton" style="height:70px;border-radius:10px;flex:1"></div>
+            <div class="skeleton" style="height:70px;border-radius:10px;flex:1"></div>
+            <div class="skeleton" style="height:70px;border-radius:10px;flex:1"></div>
+          </div>
+        </div>
+
+        <!-- Macros hoje -->
+        <div class="card card-macros">
+          <h2>Macros Hoje</h2>
+          <div class="macros-grid" id="macros-grid">
+            <div class="skeleton" style="height:120px;border-radius:12px"></div>
+            <div class="skeleton" style="height:120px;border-radius:12px"></div>
+            <div class="skeleton" style="height:120px;border-radius:12px"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MEUS TREINOS ===== -->
+    <section class="page" id="page-treinos">
+      <div class="treinos-filter">
+        <button class="filter-btn active" data-filter="todos">Todos</button>
+        <button class="filter-btn" data-filter="Peito">Peito</button>
+        <button class="filter-btn" data-filter="Costas">Costas</button>
+        <button class="filter-btn" data-filter="Pernas">Pernas</button>
+        <button class="filter-btn" data-filter="Ombro">Ombro</button>
+        <button class="filter-btn" data-filter="Braços">Braços</button>
+      </div>
+      <div class="treinos-grid" id="treinos-grid">
+        <div class="skeleton treino-skeleton"></div>
+        <div class="skeleton treino-skeleton"></div>
+        <div class="skeleton treino-skeleton"></div>
+        <div class="skeleton treino-skeleton"></div>
+        <div class="skeleton treino-skeleton"></div>
+        <div class="skeleton treino-skeleton"></div>
+      </div>
+    </section>
+
+    <!-- ===== PLANO SEMANAL ===== -->
+    <section class="page" id="page-plano">
+      <div class="plan-header-row">
+        <h2>Plano Semanal de Treinos</h2>
+        <button class="btn-primary" onclick="navigate('ia')">✨ Gerar com IA</button>
+      </div>
+      <div class="weekly-plan" id="weekly-plan">
+        <div class="skeleton" style="height:220px;border-radius:16px"></div>
+        <div class="skeleton" style="height:220px;border-radius:16px"></div>
+        <div class="skeleton" style="height:220px;border-radius:16px"></div>
+        <div class="skeleton" style="height:220px;border-radius:16px"></div>
+        <div class="skeleton" style="height:220px;border-radius:16px"></div>
+        <div class="skeleton" style="height:180px;border-radius:16px"></div>
+        <div class="skeleton" style="height:180px;border-radius:16px"></div>
+      </div>
+    </section>
+
+    <!-- ===== DIETA ===== -->
+    <section class="page" id="page-dieta">
+      <div class="dieta-layout">
+        <div class="dieta-main">
+          <div class="card">
+            <h2>Plano Alimentar de Hoje</h2>
+            <div class="meal-list" id="meal-list">
+              <div class="skeleton" style="height:80px;border-radius:12px;margin-bottom:10px"></div>
+              <div class="skeleton" style="height:80px;border-radius:12px;margin-bottom:10px"></div>
+              <div class="skeleton" style="height:80px;border-radius:12px;margin-bottom:10px"></div>
+              <div class="skeleton" style="height:80px;border-radius:12px"></div>
+            </div>
+          </div>
+        </div>
+        <div class="dieta-sidebar">
+          <div class="card">
+            <h3>Total do Dia</h3>
+            <div class="total-cals" id="total-cals">— <span>kcal</span></div>
+            <div class="macro-bars" id="macro-bars"></div>
+          </div>
+          <div class="card card-dicas-nutri">
+            <h3>💡 Dicas de Nutrição</h3>
+            <ul id="nutri-tips">
+              <li>Beba ao menos 3L de água por dia</li>
+              <li>Priorize proteína em todas as refeições</li>
+              <li>Evite carboidratos simples à noite</li>
+              <li>Consuma gorduras boas (abacate, azeite)</li>
+              <li>Durma 7-9h para recuperação muscular</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROFISSIONAIS ===== -->
+    <section class="page" id="page-profissionais">
+      <div class="prof-intro">
+        <h2>Nossa Equipe de Especialistas</h2>
+        <p>Profissionais certificados prontos para guiar sua jornada</p>
+      </div>
+      <div class="prof-grid" id="prof-grid">
+        <div class="skeleton" style="height:380px;border-radius:20px"></div>
+        <div class="skeleton" style="height:380px;border-radius:20px"></div>
+        <div class="skeleton" style="height:380px;border-radius:20px"></div>
+      </div>
+    </section>
+
+    <!-- ===== PROGRESSO ===== -->
+    <section class="page" id="page-progresso">
+      <div class="progress-grid">
+        <div class="card">
+          <h2>Evolução do Peso</h2>
+          <div class="chart-placeholder">
+            <canvas id="weight-chart" height="150"></canvas>
+            <div class="chart-labels" id="chart-labels"></div>
+          </div>
+        </div>
+        <div class="card">
+          <h2>Recordes Pessoais</h2>
+          <div class="records-list" id="records-list">
+            <div class="skeleton" style="height:44px;border-radius:8px;margin-bottom:8px"></div>
+            <div class="skeleton" style="height:44px;border-radius:8px;margin-bottom:8px"></div>
+            <div class="skeleton" style="height:44px;border-radius:8px"></div>
+          </div>
+        </div>
+
+        <!-- Formulário registrar progresso -->
+        <div class="card col-span-2">
+          <h2>Registrar Progresso</h2>
+          <div class="progress-form-grid">
+            <div class="form-group">
+              <label>Peso (kg)</label>
+              <input type="number" id="prog-weight" placeholder="78.5" step="0.1"/>
+            </div>
+            <div class="form-group">
+              <label>% Gordura</label>
+              <input type="number" id="prog-fat" placeholder="15.0" step="0.1"/>
+            </div>
+            <div class="form-group">
+              <label>Notas</label>
+              <input type="text" id="prog-notes" placeholder="Como foi a semana..."/>
+            </div>
+            <div class="form-group" style="display:flex;align-items:flex-end">
+              <button class="btn-primary full-width" onclick="saveProgress()">💾 Salvar</button>
+            </div>
+          </div>
+          <div id="prog-feedback" style="display:none;margin-top:12px"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== IA TREINO ===== -->
+    <section class="page" id="page-ia">
+      <div class="ia-layout">
+        <div class="ia-hero">
+          <div class="ia-icon">🤖</div>
+          <h2>Gere seu Treino com IA</h2>
+          <p>Nossa inteligência artificial cria um plano personalizado baseado no seu perfil e objetivos</p>
+        </div>
+        <div class="card ia-form">
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Objetivo</label>
+              <select id="ia-objetivo">
+                <option value="hipertrofia">Hipertrofia (ganho de massa)</option>
+                <option value="emagrecimento">Emagrecimento</option>
+                <option value="condicionamento">Condicionamento</option>
+                <option value="forca">Força</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Nível</label>
+              <select id="ia-nivel">
+                <option value="iniciante">Iniciante</option>
+                <option value="intermediario">Intermediário</option>
+                <option value="avancado">Avançado</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Dias por semana</label>
+              <select id="ia-dias">
+                <option value="3">3 dias</option>
+                <option value="4">4 dias</option>
+                <option value="5" selected>5 dias</option>
+                <option value="6">6 dias</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Duração do treino</label>
+              <select id="ia-duracao">
+                <option value="45">45 minutos</option>
+                <option value="60" selected>60 minutos</option>
+                <option value="90">90 minutos</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Equipamentos</label>
+              <select id="ia-equipamentos">
+                <option value="academia_completa">Academia completa</option>
+                <option value="academia_basica">Academia básica</option>
+                <option value="em_casa">Em casa</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Restrições físicas</label>
+              <input type="text" id="ia-restricoes" placeholder="Ex: joelho, ombro..."/>
+            </div>
+          </div>
+          <button class="btn-primary full-width ia-btn" id="ia-btn" onclick="gerarTreinoIA()">✨ Gerar Treino Personalizado</button>
+          <div id="ia-status" style="display:none;margin-top:16px"></div>
+          <div id="ia-result" style="display:none;margin-top:24px"></div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /pages-wrapper -->
+</main>
+</div><!-- /app -->
+
+<!-- Chart.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
