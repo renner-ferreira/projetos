@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfólio de Renner Daniel Gomes Ferreira — Desenvolvedor Full Stack em formação">
+  <meta name="keywords" content="desenvolvedor, web developer, javascript, react, node.js, php, full stack">
+  <meta name="author" content="Renner Daniel Gomes Ferreira">
+  <title>Renner Daniel — Full Stack Developer</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Canvas BG -->
+  <canvas id="canvas3d"></canvas>
+
+  <!-- ======================================================
+       NAVBAR
+  ====================================================== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <span class="brand-symbol">{ RD }</span>
+      </div>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#home"     class="nav-link">Início</a></li>
+        <li><a href="#about"    class="nav-link">Sobre</a></li>
+        <li><a href="#skills"   class="nav-link">Habilidades</a></li>
+        <li><a href="#projects" class="nav-link">Projetos</a></li>
+        <li><a href="#contact"  class="nav-link">Contato</a></li>
+      </ul>
+      <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">🌙</button>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ======================================================
+       HERO
+  ====================================================== -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+
+        <div class="hero-text">
+          <span class="hero-eyebrow">Desenvolvedor Full Stack</span>
+          <h1 class="hero-title">
+            Renner<br>
+            <span class="highlight">Daniel</span><br>
+            Ferreira
+          </h1>
+          <p class="hero-subtitle">Em formação · Disponível para oportunidades</p>
+          <p class="hero-description">
+            Estudante de Sistemas para Internet, apaixonado por tecnologia e desenvolvimento de software.
+            Focado em criar soluções inovadoras com código limpo e eficiente.
+          </p>
+          <div class="hero-cta">
+            <a href="#projects" class="btn btn-primary">Ver Projetos</a>
+            <a href="#contact"  class="btn btn-secondary">Entre em Contato</a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="code-window">
+            <div class="window-header">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+              <span class="window-title">developer.js</span>
+            </div>
+            <div class="window-content">
+              <pre><code><span class="code-keyword">const</span> <span class="code-variable">developer</span> = {
+  <span class="code-property">nome</span>: <span class="code-string">'Renner Daniel'</span>,
+  <span class="code-property">cargo</span>: <span class="code-string">'Full Stack Developer'</span>,
+  <span class="code-property">formacao</span>: <span class="code-string">'Sistemas para Internet'</span>,
+  <span class="code-property">stack</span>: [
+    <span class="code-string">'JavaScript'</span>, <span class="code-string">'Node.js'</span>,
+    <span class="code-string">'React'</span>, <span class="code-string">'PHP'</span>,
+    <span class="code-string">'Python'</span>, <span class="code-string">'MySQL'</span>
+  ],
+  <span class="code-property">status</span>: <span class="code-string">'open_to_work'</span><span class="cursor-line"></span>
+};</code></pre>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="scroll-indicator"><span></span></div>
+  </section>
+
+  <!-- ======================================================
+       ABOUT
+  ====================================================== -->
+  <section class="about" id="about">
+    <div class="section-line"></div>
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="section-number">// 01</span>
+        <h2 class="section-title">Sobre Mim</h2>
+      </div>
+
+      <div class="about-content">
+
+        <!-- Foto -->
+        <div class="profile-card" data-reveal>
+          <div class="profile-image-wrapper">
+            <img src="profile-photo.jpg" alt="Renner Daniel" class="profile-image">
+            <div class="profile-image-overlay"></div>
+          </div>
+          <div class="profile-card-info">
+            <h3>Renner Daniel</h3>
+            <p class="profile-role">full_stack_developer</p>
+            <div class="profile-status">
+              <span class="status-dot"></span>
+              <span>Disponível para oportunidades</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Texto -->
+        <div class="about-text">
+          <p class="about-intro" data-reveal data-reveal-delay="1">
+            Desenvolvedor em formação com paixão por tecnologia e inovação.
+          </p>
+
+          <div class="about-details" data-reveal data-reveal-delay="2">
+            <p>Sou estudante de <strong>Sistemas para Internet</strong> na FATEC Taquaritinga, com previsão de conclusão em 2026, e também <strong>Técnico em Informática para Internet</strong> pela ETEC Adail Nunes da Silva.</p>
+            <p>Trabalho com linguagens como JavaScript, Node.js, Java, Python, PHP e TypeScript, além de frameworks modernos como React e React Native. Desenvolvi projetos acadêmicos e pessoais que consolidaram meus conhecimentos em desenvolvimento web, APIs REST e bancos de dados relacionais.</p>
+            <p>Utilizo metodologias ágeis como <strong>Kanban</strong> para organizar meu fluxo de trabalho e versionamento com Git no dia a dia.</p>
+          </div>
+
+          <div class="about-qualities" data-reveal data-reveal-delay="3">
+            <div class="quality-item">
+              <div class="quality-icon">⚡</div>
+              <h4>Dedicado</h4>
+              <p>Comprometido com a qualidade e entrega de resultados</p>
+            </div>
+            <div class="quality-item">
+              <div class="quality-icon">🎯</div>
+              <h4>Aprendiz Ágil</h4>
+              <p>Facilidade em absorver novas tecnologias rapidamente</p>
+            </div>
+            <div class="quality-item">
+              <div class="quality-icon">🚀</div>
+              <h4>Adaptável</h4>
+              <p>Flexível para trabalhar com diferentes stacks</p>
+            </div>
+          </div>
+
+          <div class="info-cards" data-reveal data-reveal-delay="4">
+            <div class="info-card">
+              <h3>Formação</h3>
+              <div class="timeline">
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-content">
+                    <h4>Sistemas para Internet</h4>
+                    <p class="institution">FATEC Taquaritinga</p>
+                    <p class="period">2024 – 2026 (em curso)</p>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-content">
+                    <h4>Técnico em Informática para Internet</h4>
+                    <p class="institution">ETEC Adail Nunes da Silva</p>
+                    <p class="period">Concluído</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="info-card">
+              <h3>Localização &amp; Disponibilidade</h3>
+              <p class="location">📍 Taquaritinga, São Paulo — Brasil</p>
+              <p class="availability" style="margin-top:0.5rem">✅ Estágio · Júnior · Remoto ou Híbrido</p>
+              <p class="availability-note">aberto a oportunidades</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SKILLS
+  ====================================================== -->
+  <section class="skills" id="skills">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="section-number">// 02</span>
+        <h2 class="section-title">Habilidades Técnicas</h2>
+      </div>
+
+      <div class="skills-grid" data-reveal data-reveal-delay="1">
+
+        <div class="skill-category">
+          <h3 class="category-title">Frontend</h3>
+          <div class="skill-items">
+            <div class="skill-item">
+              <span class="skill-name">HTML5 / CSS3</span>
+              <div class="skill-bar"><div class="skill-progress" data-width="90"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">JavaScript</span>
+              <div class="skill-bar"><div class="skill-progress" data-width="85"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">React / React Native</span>
+              <div class="skill-bar"><div class="skill-progress" data-width="75"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">TypeScript</span>
+              <div class="skill-bar"><div class="skill-progress" data-width="70"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3 class="category-title">Backend</h3>
+          <div class="skill-items">
+            <div class="skill-item">
+              <span class="skill-name">Node.js</span>
+              <div class="skill-bar"><div class="skill-progress" data-width="80"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">PHP</span>
+              <div class="skill-bar"><div class="skill-progress" data-width="75"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Python</span>
+              <div class="skill-bar"><div class="skill-progress" data-width="70"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Java</span>
+              <div class="skill-bar"><div class="skill-progress" data-width="65"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">APIs REST</span>
+              <div class="skill-bar"><div class="skill-progress" data-width="80"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3 class="category-title">Database &amp; Tools</h3>
+          <div class="skill-items">
+            <div class="skill-item">
+              <span class="skill-name">MySQL</span>
+              <div class="skill-bar"><div class="skill-progress" data-width="80"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Git / GitHub</span>
+              <div class="skill-bar"><div class="skill-progress" data-width="85"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Kanban / Agile</span>
+              <div class="skill-bar"><div class="skill-progress" data-width="75"></div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="tech-stack" data-reveal data-reveal-delay="2">
+        <h3>Stack completa</h3>
+        <div class="tech-badges">
+          <span class="tech-badge">JavaScript</span>
+          <span class="tech-badge">TypeScript</span>
+          <span class="tech-badge">Node.js</span>
+          <span class="tech-badge">React</span>
+          <span class="tech-badge">React Native</span>
+          <span class="tech-badge">PHP</span>
+          <span class="tech-badge">Python</span>
+          <span class="tech-badge">Java</span>
+          <span class="tech-badge">MySQL</span>
+          <span class="tech-badge">HTML5</span>
+          <span class="tech-badge">CSS3</span>
+          <span class="tech-badge">Git</span>
+          <span class="tech-badge">REST API</span>
+          <span class="tech-badge">Kanban</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       PROJECTS
+  ====================================================== -->
+  <section class="projects" id="projects">
+    <div class="section-line"></div>
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="section-number">// 03</span>
+        <h2 class="section-title">Projetos</h2>
+        <p class="section-description">Explore projetos funcionais. Clique para interagir!</p>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- 1 · Calculadora Científica -->
+        <div class="project-card" data-reveal data-reveal-delay="1">
+          <div class="project-preview-area">
+            <div class="calculator-mini">
+              <div class="calc-display">0</div>
+              <div class="calc-grid-mini">
+                <button>7</button><button>8</button><button>9</button>
+                <button>4</button><button>5</button><button>6</button>
+                <button>1</button><button>2</button><button>3</button>
+              </div>
+            </div>
+            <div class="project-overlay">
+              <button class="project-link" onclick="openProject('calculator')">Abrir Demo</button>
+              <a href="#" class="project-link outline" onclick="return false">Ver Código</a>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-tags">
+              <span class="project-tag">JavaScript</span>
+              <span class="project-tag">CSS Grid</span>
+              <span class="project-tag">HTML5</span>
+            </div>
+            <h3 class="project-title">Calculadora Científica</h3>
+            <p class="project-description">Calculadora com operações básicas e científicas, histórico de cálculos, tema claro/escuro e design responsivo. Desenvolvida com JavaScript puro.</p>
+            <div class="project-features">
+              <span>Operações científicas</span>
+              <span>Histórico de cálculos</span>
+              <span>Temas personalizáveis</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 · Todo List -->
+        <div class="project-card" data-reveal data-reveal-delay="2">
+          <div class="project-preview-area">
+            <div class="todo-mini">
+              <div class="todo-item-mini" style="text-decoration:line-through;opacity:0.6">✓ Design do projeto</div>
+              <div class="todo-item-mini active">○ Desenvolvimento</div>
+              <div class="todo-item-mini">○ Testes</div>
+              <div class="todo-item-mini">○ Deploy</div>
+            </div>
+            <div class="project-overlay">
+              <button class="project-link" onclick="openProject('todo')">Abrir Demo</button>
+              <a href="#" class="project-link outline" onclick="return false">Ver Código</a>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-tags">
+              <span class="project-tag">JavaScript</span>
+              <span class="project-tag">LocalStorage</span>
+              <span class="project-tag">CSS3</span>
+            </div>
+            <h3 class="project-title">Gerenciador de Tarefas</h3>
+            <p class="project-description">Sistema completo de gerenciamento de tarefas com drag-and-drop, categorias, filtros, busca e persistência de dados. Interface intuitiva e moderna.</p>
+            <div class="project-features">
+              <span>Drag and Drop</span>
+              <span>Filtros avançados</span>
+              <span>Persistência local</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 · Weather App -->
+        <div class="project-card" data-reveal data-reveal-delay="3">
+          <div class="project-preview-area">
+            <div class="weather-mini">
+              <div class="weather-icon">☀️</div>
+              <div class="weather-temp">28°C</div>
+              <div class="weather-city">São Paulo</div>
+            </div>
+            <div class="project-overlay">
+              <button class="project-link" onclick="openProject('weather')">Abrir Demo</button>
+              <a href="#" class="project-link outline" onclick="return false">Ver Código</a>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-tags">
+              <span class="project-tag">API</span>
+              <span class="project-tag">JavaScript</span>
+              <span class="project-tag">Async/Await</span>
+            </div>
+            <h3 class="project-title">App de Clima</h3>
+            <p class="project-description">Previsão do tempo com integração à API pública, geolocalização, previsão de 5 dias, gráficos interativos e animações baseadas no clima.</p>
+            <div class="project-features">
+              <span>Integração com API</span>
+              <span>Geolocalização</span>
+              <span>Gráficos dinâmicos</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 · Player de Música -->
+        <div class="project-card" data-reveal data-reveal-delay="1">
+          <div class="project-preview-area">
+            <div class="music-mini">
+              <div class="music-disc"></div>
+              <div class="music-controls">
+                <span>⏮</span><span>▶️</span><span>⏭</span>
+              </div>
+            </div>
+            <div class="project-overlay">
+              <button class="project-link" onclick="openProject('music')">Abrir Demo</button>
+              <a href="#" class="project-link outline" onclick="return false">Ver Código</a>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-tags">
+              <span class="project-tag">Web Audio API</span>
+              <span class="project-tag">JavaScript</span>
+              <span class="project-tag">CSS Animations</span>
+            </div>
+            <h3 class="project-title">Player de Música</h3>
+            <p class="project-description">Player completo com playlist, visualizador de frequência, equalizer, controles de velocidade e volume, e modos shuffle/repeat.</p>
+            <div class="project-features">
+              <span>Visualizador de áudio</span>
+              <span>Equalizer</span>
+              <span>Playlist dinâmica</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5 · Sistema de Login PHP (NOVO — PHP/Backend) -->
+        <div class="project-card featured" data-reveal data-reveal-delay="2">
+          <div class="project-preview-area">
+            <div class="php-mini">
+              <div class="php-header">🔐 Login &amp; Cadastro</div>
+              <div class="php-body">
+                <div class="php-label">E-mail</div>
+                <div class="php-input">usuario@email.com</div>
+                <div class="php-label">Senha</div>
+                <div class="php-input">••••••••</div>
+                <div class="php-btn">Entrar</div>
+              </div>
+            </div>
+            <div class="project-overlay">
+              <button class="project-link" onclick="openProject('phpauth')">Abrir Demo</button>
+              <a href="#" class="project-link outline" onclick="return false">Ver Código</a>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-tags">
+              <span class="project-badge-featured">★ Destaque</span>
+              <span class="project-tag">PHP</span>
+              <span class="project-tag">MySQL</span>
+              <span class="project-tag">PDO</span>
+              <span class="project-tag">Sessions</span>
+              <span class="project-tag">CSRF</span>
+            </div>
+            <h3 class="project-title">Sistema de Autenticação PHP + MySQL</h3>
+            <p class="project-description">
+              Sistema de login e cadastro full-stack desenvolvido com PHP puro e MySQL via PDO. Conta com hashing seguro de senhas (bcrypt), proteção CSRF, controle de sessões, painel de usuário autenticado e middleware de autenticação para rotas protegidas. Estrutura MVC organizada e código comentado.
+            </p>
+            <div class="project-features">
+              <span>Hashing bcrypt (password_hash)</span>
+              <span>Proteção CSRF com token</span>
+              <span>Sessions seguras + logout</span>
+              <span>Painel pós-login com dados do usuário</span>
+              <span>Estrutura MVC + PDO prepared statements</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6 · Quiz Interativo -->
+        <div class="project-card" data-reveal data-reveal-delay="3">
+          <div class="project-preview-area">
+            <div class="quiz-mini">
+              <div class="quiz-question">Qual é a capital do Brasil?</div>
+              <div class="quiz-options">
+                <div class="quiz-option">A) São Paulo</div>
+                <div class="quiz-option" style="border-color:var(--accent3);color:var(--accent3)">B) Brasília ✓</div>
+                <div class="quiz-option">C) Rio de Janeiro</div>
+              </div>
+            </div>
+            <div class="project-overlay">
+              <button class="project-link" onclick="openProject('quiz')">Abrir Demo</button>
+              <a href="#" class="project-link outline" onclick="return false">Ver Código</a>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-tags">
+              <span class="project-tag">JavaScript</span>
+              <span class="project-tag">JSON</span>
+              <span class="project-tag">Gamification</span>
+            </div>
+            <h3 class="project-title">Quiz Interativo</h3>
+            <p class="project-description">Jogo de perguntas e respostas com múltiplas categorias, sistema de pontuação, timer, ranking e diferentes níveis de dificuldade.</p>
+            <div class="project-features">
+              <span>Múltiplas categorias</span>
+              <span>Sistema de pontos</span>
+              <span>Timer por pergunta</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7 · API REST Node.js (NOVO) -->
+        <div class="project-card featured" data-reveal data-reveal-delay="1">
+          <div class="project-preview-area">
+            <div class="cms-mini" style="width:260px">
+              <div class="cms-header">API REST — Task Manager</div>
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--text-1);display:flex;flex-direction:column;gap:0.3rem">
+                <div style="display:flex;align-items:center;gap:0.4rem">
+                  <span style="color:var(--accent3);font-weight:700">GET</span>
+                  <span style="color:var(--text-2)">/api/tasks</span>
+                  <span style="margin-left:auto;color:var(--accent3)">200</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:0.4rem">
+                  <span style="color:var(--accent);font-weight:700">POST</span>
+                  <span style="color:var(--text-2)">/api/tasks</span>
+                  <span style="margin-left:auto;color:var(--accent)">201</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:0.4rem">
+                  <span style="color:var(--accent2);font-weight:700">PUT</span>
+                  <span style="color:var(--text-2)">/api/tasks/:id</span>
+                  <span style="margin-left:auto;color:var(--accent2)">200</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:0.4rem">
+                  <span style="color:#f97583;font-weight:700">DEL</span>
+                  <span style="color:var(--text-2)">/api/tasks/:id</span>
+                  <span style="margin-left:auto;color:#f97583">204</span>
+                </div>
+              </div>
+            </div>
+            <div class="project-overlay">
+              <button class="project-link" onclick="openProject('api')">Ver Detalhes</button>
+              <a href="#" class="project-link outline" onclick="return false">Ver Código</a>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-tags">
+              <span class="project-badge-featured">★ Destaque</span>
+              <span class="project-tag">Node.js</span>
+              <span class="project-tag">Express</span>
+              <span class="project-tag">MySQL</span>
+              <span class="project-tag">JWT</span>
+              <span class="project-tag">Swagger</span>
+            </div>
+            <h3 class="project-title">API REST · Gerenciador de Tarefas (Node.js)</h3>
+            <p class="project-description">
+              API RESTful completa para gerenciamento de tarefas construída com Node.js + Express e banco MySQL. Conta com autenticação via JWT, endpoints CRUD documentados com Swagger UI, validação de dados com Joi, middleware de autenticação, e testes automatizados com Jest.
+            </p>
+            <div class="project-features">
+              <span>Autenticação JWT (login, refresh, logout)</span>
+              <span>CRUD completo de tarefas por usuário</span>
+              <span>Documentação Swagger UI interativa</span>
+              <span>Validação com Joi + tratamento de erros</span>
+              <span>Testes com Jest + Supertest</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /projects-grid -->
+    </div>
+  </section>
+
+  <!-- ======================================================
+       MODAL
+  ====================================================== -->
+  <div class="project-modal" id="projectModal">
+    <div class="modal-overlay" onclick="closeProject()"></div>
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeProject()">×</button>
+      <div id="projectContainer"></div>
+    </div>
+  </div>
+
+  <!-- ======================================================
+       CONTATO
+  ====================================================== -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="section-number">// 04</span>
+        <h2 class="section-title">Entre em Contato</h2>
+      </div>
+
+      <div class="contact-content">
+        <div data-reveal data-reveal-delay="1">
+          <h3 class="contact-heading">Vamos Conversar!</h3>
+          <p class="contact-text">Estou disponível para oportunidades de estágio, vagas júnior/pleno e projetos freelance. Se você procura um desenvolvedor dedicado e apaixonado por tecnologia, fico feliz em conversar!</p>
+
+          <div class="contact-methods">
+            <div class="contact-method">
+              <div class="method-icon">✉️</div>
+              <div class="method-info">
+                <h4>Email</h4>
+                <a href="mailto:renner@email.com">renner@email.com</a>
+              </div>
+            </div>
+            <div class="contact-method">
+              <div class="method-icon">💼</div>
+              <div class="method-info">
+                <h4>LinkedIn</h4>
+                <a href="https://linkedin.com/in/renner-daniel" target="_blank">linkedin.com/in/renner-daniel</a>
+              </div>
+            </div>
+            <div class="contact-method">
+              <div class="method-icon">🐙</div>
+              <div class="method-info">
+                <h4>GitHub</h4>
+                <a href="https://github.com/rennerdaniel" target="_blank">github.com/rennerdaniel</a>
+              </div>
+            </div>
+            <div class="contact-method">
+              <div class="method-icon">📱</div>
+              <div class="method-info">
+                <h4>WhatsApp</h4>
+                <a href="tel:+5516999999999">+55 (16) 99999-9999</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-wrapper" data-reveal data-reveal-delay="2">
+          <form class="contact-form" id="contactForm" action="send_email.php" method="POST">
+            <div class="form-group">
+              <label for="name">Nome</label>
+              <input type="text" id="name" name="name" placeholder="Seu nome" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+            </div>
+            <div class="form-group">
+              <label for="subject">Assunto</label>
+              <input type="text" id="subject" name="subject" placeholder="Proposta de estágio" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Mensagem</label>
+              <textarea id="message" name="message" rows="5" placeholder="Olá Renner, vi seu portfólio e..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">Enviar Mensagem</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       FOOTER
+  ====================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <span class="brand-symbol">{ RD }</span>
+          <p>Desenvolvedor Full Stack em Formação</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navegação</h4>
+          <ul>
+            <li><a href="#home">Início</a></li>
+            <li><a href="#about">Sobre</a></li>
+            <li><a href="#skills">Habilidades</a></li>
+            <li><a href="#projects">Projetos</a></li>
+            <li><a href="#contact">Contato</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h4>Redes</h4>
+          <div class="social-links">
+            <a href="https://github.com/rennerdaniel" target="_blank" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </a>
+            <a href="https://linkedin.com/in/renner-daniel" target="_blank" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Renner Daniel Gomes Ferreira — Feito com dedicação e muito café ☕</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
