@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2026/04/27 14:30:50.421.pas,C:\Users\MANUEL\Documents\RAD Studio\Projects\Unit1.pas=C:\Users\MANUEL\Contacts\Desktop\RENNER\MenuPrincipal.pas</Transaction>
+    <Transaction>2026/04/27 14:30:50.421.dfm,C:\Users\MANUEL\Documents\RAD Studio\Projects\Unit1.dfm=C:\Users\MANUEL\Contacts\Desktop\RENNER\MenuPrincipal.dfm</Transaction>
+    <Transaction>2026/04/27 14:31:22.190.dproj,C:\Users\MANUEL\Documents\RAD Studio\Projects\Project1.dproj=C:\Users\MANUEL\Contacts\Desktop\RENNER\ProjEstagiario.dproj</Transaction>
+    <Transaction>2026/04/27 14:31:59.660.pas,C:\Users\MANUEL\Contacts\Desktop\RENNER\Unit1.pas=C:\Users\MANUEL\Contacts\Desktop\RENNER\DMPrincipal.pas</Transaction>
+    <Transaction>2026/04/27 14:31:59.660.dfm,C:\Users\MANUEL\Contacts\Desktop\RENNER\Unit1.dfm=C:\Users\MANUEL\Contacts\Desktop\RENNER\DMPrincipal.dfm</Transaction>
+    <Transaction>2026/04/27 14:41:12.389.pas,C:\Users\MANUEL\Contacts\Desktop\RENNER\Unit2.pas=C:\Users\MANUEL\Contacts\Desktop\RENNER\CLIENTE.pas</Transaction>
+    <Transaction>2026/04/27 14:41:12.389.dfm,C:\Users\MANUEL\Contacts\Desktop\RENNER\Unit2.dfm=C:\Users\MANUEL\Contacts\Desktop\RENNER\CLIENTE.dfm</Transaction>
+    <Transaction>2026/04/27 16:27:26.139.pas,C:\Users\MANUEL\Contacts\Desktop\RENNER\Unit1.pas=C:\Users\MANUEL\Contacts\Desktop\RENNER\CLIENTEC.pas</Transaction>
+    <Transaction>2026/04/27 16:27:26.139.dfm,C:\Users\MANUEL\Contacts\Desktop\RENNER\Unit1.dfm=C:\Users\MANUEL\Contacts\Desktop\RENNER\CLIENTEC.dfm</Transaction>
+  </Transactions>
+</BorlandProject>
