@@ -18,7 +18,7 @@ type
     { Private declarations }
   public
     { Public declarations }
-
+     procedure ChamaTela;
   end;
 
 var
@@ -26,13 +26,18 @@ var
 
 implementation
 
-uses CLIENTE, CLIENTEC, DMPrincipal;
+uses CLIENTE, CLIENTEC;
 
 {$R *.dfm}
 
+procedure TTMenuPrincipal.ChamaTela;
+begin
+
+end;
+
 procedure TTMenuPrincipal.cliente1Click(Sender: TObject);
 begin
-TTCliente.CHAMATELA;
+  TCliente.ChamaTela;
 end;
 
 end.

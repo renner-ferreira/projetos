@@ -43,9 +43,6 @@
 			<DelphiCompile Include="ProjEstagiario.dpr">
 				<MainSource>MainSource</MainSource>
 			</DelphiCompile>
-			<DCCReference Include="MenuPrincipal.pas">
-				<Form>TMenuPrincipal</Form>
-			</DCCReference>
 			<DCCReference Include="DMPrincipal.pas">
 				<Form>TDMPrincipal</Form>
 				<DesignClass>TDataModule</DesignClass>
@@ -54,17 +51,17 @@
 				<Form>TCliente</Form>
 			</DCCReference>
 			<DCCReference Include="CLIENTEC.pas">
-				<Form>Form1</Form>
+				<Form>TCLIENTEC</Form>
 			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
-			<BuildConfiguration Include="Debug">
-				<Key>Cfg_2</Key>
-				<CfgParent>Base</CfgParent>
-			</BuildConfiguration>
 			<BuildConfiguration Include="Release">
 				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Debug">
+				<Key>Cfg_2</Key>
 				<CfgParent>Base</CfgParent>
 			</BuildConfiguration>
 		</ItemGroup>
@@ -110,6 +107,7 @@
 						<VersionInfoKeys Name="Comments"/>
 					</VersionInfoKeys>
 				</Delphi.Personality>
+				<ModelSupport>False</ModelSupport>
 			</BorlandProject>
 			<ProjectFileVersion>12</ProjectFileVersion>
 		</ProjectExtensions>

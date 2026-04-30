@@ -4,43 +4,38 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons, Grids, DBGrids, ExtCtrls, DBCtrls;
+  Dialogs, StdCtrls, Buttons, Grids, DBGrids, ExtCtrls, DBCtrls,
+  CLIENTEC;
 
 type
   TTCliente = class(TForm)
-    t: TPanel;
-    FOOTER: TPanel;
-    DBNavigator1: TDBNavigator;
-    LAB: TLabel;
-    LAB1: TLabel;
-    MENU: TRadioGroup;
-    MAIN: TPanel;
-    btnlimpar: TBitBtn;
-    btntranferir: TBitBtn;
-    btnName: TBitBtn;
-    btnExcluir: TBitBtn;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    Panel3: TPanel;
+    dbGridCliente: TDBGrid;
+    edPesquisa: TEdit;
+    btnLimpar: TBitBtn;
+    btnFechar: TBitBtn;
+    BitBtn3: TBitBtn;
     BitBtn4: TBitBtn;
-    btnSair: TBitBtn;
-    BTN: TRadioButton;
-    BTN1: TRadioButton;
-    BTN2: TRadioButton;
-    btnConsultar: TBitBtn;
-    RG: TDBGrid;
-    Edit1: TEdit;
-    DBGrid1: TDBGrid;
-    Edit2: TEdit;
-  private
+    BitBtn5: TBitBtn;
+    BitBtn6: TBitBtn;
+    BitBtn7: TBitBtn;
+    DBNavigator1: TDBNavigator;
+    RadioGroup1: TRadioGroup;
+    Label1: TLabel;
+    Label2: TLabel;
+    BitBtn1: TBitBtn;
+    procedure BTNINSERIRClick(Sender: TObject);
+    procedure btnConsultarClick(Sender: TObject);
     procedure btnNameClick(Sender: TObject);
-    procedure tClick(Sender: TObject);
-    procedure BTN1Click(Sender: TObject);
-    procedure BTNClick(Sender: TObject);
-    procedure FOOTERClick(Sender: TObject);
-    procedure LAB1Click(Sender: TObject);
-    procedure RadioGroup1Click(Sender: TObject);
-    { Private declarations }
-  public
-    { Public declarations }
-    procedure CHAMATELA;
+    procedure BitBtn6Click(Sender: TObject);
+    procedure BitBtn5Click(Sender: TObject);
+
+    private
+
+    public
+      procedure ChamaTela;
   end;
 
 var
@@ -50,58 +45,39 @@ implementation
 
 {$R *.dfm}
 
-procedure TTCliente.CHAMATELA;
+procedure TTCliente.BTNINSERIRClick(Sender: TObject);
 begin
-     TCLIENTE := TTCliente.Create(application);
-     WITH TCliente do
-     begin
-     ShowModal;
-       end;
-     end;
+  TClienteC.ChamaTela;
+end;
 
+procedure TTCliente.BitBtn5Click(Sender: TObject);
+begin
+    TClienteC.ChamaTela;
+end;
+
+procedure TTCliente.BitBtn6Click(Sender: TObject);
+begin
+    TClienteC.ChamaTela;
+end;
+
+procedure TTCliente.btnConsultarClick(Sender: TObject);
+begin
+  TClienteC.ChamaTela;
+end;
 
 procedure TTCliente.btnNameClick(Sender: TObject);
 begin
-
+  TClienteC.ChamaTela;
 end;
 
-
-
-procedure TTCliente.tClick(Sender: TObject);
+procedure TTCliente.ChamaTela;
 begin
-
-
-
-end;
-
-
-
-
-
-procedure TTCliente.FOOTERClick(Sender: TObject);
-begin
-
-
-end;
-
-procedure TTCliente.BTNClick(Sender: TObject);
-begin
-
-end;
-
-procedure TTCliente.BTN1Click(Sender: TObject);
-begin
-
-end;
-
-procedure TTCliente.RadioGroup1Click(Sender: TObject);
-begin
-
-end;
-
-procedure TTCliente.LAB1Click(Sender: TObject);
-begin
-
+  TCliente := TTCliente.Create(Application);
+  with TCliente do
+  begin
+    ShowModal;
+    FreeAndNil(TCliente);
+  end;
 end;
 
 end.

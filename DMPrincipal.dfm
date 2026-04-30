@@ -10,8 +10,9 @@ object TDMPrincipal: TTDMPrincipal
   end
   object ADOConexao: TADOConnection
     ConnectionString = 
-      'Provider=SQLOLEDB.1;Persist Security Info=False;User ID=SA;Initi' +
-      'al Catalog=ESTAGIARIO_RENNER;Data Source=LOCALHOST'
+      'Provider=SQLOLEDB.1;Password=14;Persist Security Info=True;User ' +
+      'ID=SA;Initial Catalog=ESTAGIARIO_RENNER;Data Source=LOCALHOST'
+    LoginPrompt = False
     Provider = 'SQLOLEDB.1'
     Left = 48
     Top = 72
