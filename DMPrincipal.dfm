@@ -5,10 +5,13 @@ object TDMPrincipal: TTDMPrincipal
   object QAux: TADOQuery
     Connection = ADOConexao
     Parameters = <>
+    SQL.Strings = (
+      '')
     Left = 144
     Top = 72
   end
   object ADOConexao: TADOConnection
+    Connected = True
     ConnectionString = 
       'Provider=SQLOLEDB.1;Password=14;Persist Security Info=True;User ' +
       'ID=SA;Initial Catalog=ESTAGIARIO_RENNER;Data Source=LOCALHOST'

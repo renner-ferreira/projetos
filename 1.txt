@@ -1,0 +1,38 @@
+procedure TTClientec.BtnsalvarClick(Sender: TObject);
+begin
+ if edNome.Text = '' then
+
+
+begin
+ showMessage('informe seu nome !');
+ if edNome.CanFocus then
+ edNome.SetFocus;
+ exit;
+end;
+
+ if edRg.Text = '' then
+begin
+  showMessage('inform um RG!');
+  if edRg.CanFocus then
+  edRg.SetFocus;
+  Exit;
+
+end;
+
+
+with TDMPrincipal.qAux do
+begin
+  Close;
+  SQL.Clear;
+  SQL.Add('INSERT INTO CLIENTE (NOME, RG, ATIVO)');
+  SQL.Add('VALUES (');
+  SQL.Add(QuotedStr(edNome.Text));
+  SQL.Add(',' + QuotedStr(edRg.Text) + ',');
+  if ativo.Checked then
+    SQL.Add('1')
+  else
+    SQL.Add('0');
+  SQL.Add(')');
+  ExecSQL;
+end;
+end;

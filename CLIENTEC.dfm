@@ -1,81 +1,85 @@
 object TClientec: TTClientec
   Left = 0
   Top = 154
-  Align = alClient
-  Caption = 'TCLIENTEC'
-  ClientHeight = 432
-  ClientWidth = 558
+  BorderIcons = [biSystemMenu]
+  Caption = 'Cadastro de Cliente'
+  ClientHeight = 140
+  ClientWidth = 348
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  KeyPreview = True
   OldCreateOrder = False
-  Position = poDesigned
+  Position = poScreenCenter
+  OnKeyDown = FormKeyDown
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 558
-    Height = 345
-    Align = alTop
+    Width = 348
+    Height = 92
+    Align = alClient
     TabOrder = 0
     object lbNome: TLabel
-      Left = 121
-      Top = 165
-      Width = 26
+      Left = 13
+      Top = 8
+      Width = 27
       Height = 13
-      Caption = 'nome'
+      Caption = 'Nome'
       Color = clBackground
       ParentColor = False
-      OnClick = lbNomeClick
     end
     object lbRg: TLabel
-      Left = 121
-      Top = 229
+      Left = 13
+      Top = 47
       Width = 14
       Height = 13
       Caption = 'RG'
     end
     object edNome: TEdit
-      Left = 121
-      Top = 184
-      Width = 208
+      Left = 9
+      Top = 24
+      Width = 326
       Height = 21
       TabOrder = 0
     end
     object EdRg: TEdit
-      Left = 121
-      Top = 248
-      Width = 121
+      Left = 11
+      Top = 62
+      Width = 144
       Height = 21
       TabOrder = 1
     end
   end
   object Panel2: TPanel
     Left = 0
-    Top = 336
-    Width = 558
-    Height = 96
+    Top = 92
+    Width = 348
+    Height = 48
     Align = alBottom
     TabOrder = 1
     object ATIVO: TCheckBox
-      Left = 86
+      Left = 6
       Top = 23
       Width = 49
       Height = 17
       Caption = 'ATIVO'
+      Checked = True
+      Enabled = False
+      State = cbChecked
       TabOrder = 0
       OnClick = ATIVOClick
     end
     object Btnsalvar: TBitBtn
-      Left = 184
-      Top = 15
-      Width = 75
-      Height = 25
-      Caption = 'salvar'
+      Left = 125
+      Top = 6
+      Width = 102
+      Height = 37
+      Caption = 'Salvar [F5]'
       Glyph.Data = {
         36030000424D3603000000000000360000002800000010000000100000000100
         18000000000000030000C40E0000C40E00000000000000000000FFFFFFE2E2E2
@@ -107,11 +111,12 @@ object TClientec: TTClientec
       OnClick = BtnsalvarClick
     end
     object btncancelar: TBitBtn
-      Left = 265
-      Top = 15
-      Width = 75
-      Height = 25
-      Caption = 'cancelar'
+      Left = 233
+      Top = 6
+      Width = 110
+      Height = 37
+      Cancel = True
+      Caption = 'Cancelar [ESC]'
       Glyph.Data = {
         DE010000424DDE01000000000000760000002800000024000000120000000100
         0400000000006801000000000000000000001000000000000000000000000000
@@ -131,15 +136,18 @@ object TClientec: TTClientec
         0000}
       NumGlyphs = 2
       TabOrder = 2
+      OnClick = btncancelarClick
     end
   end
   object QCliente: TADOQuery
     Parameters = <>
-    Left = 272
-    Top = 224
+    SQL.Strings = (
+      'select * from CLIENTE ')
+    Left = 120
+    Top = 192
   end
   object dsCliente: TDataSource
-    Left = 352
-    Top = 232
+    Left = 120
+    Top = 264
   end
 end

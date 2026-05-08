@@ -1,0 +1,40 @@
+unit FornecedorC;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, StdCtrls, Buttons;
+
+type
+  TTFornecedorC = class(TForm)
+    Panel1: TPanel;
+    Panel2: TPanel;
+    lbNome: TLabel;
+    EdNome: TEdit;
+    LbCnpj: TLabel;
+    Edcnpj: TEdit;
+    CheckBox1: TCheckBox;
+    btnsalvar: TBitBtn;
+    BtnCancelar: TBitBtn;
+    procedure BtnCancelarClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    Function ChamaTelaFornecedor(pTipoAcao, pCodFornecedor: string): string;
+  end;
+
+var
+  TFornecedorC: TTFornecedorC;
+
+implementation
+
+{$R *.dfm}
+
+procedure TTFornecedorC.BtnCancelarClick(Sender: TObject);
+begin
+Close;
+end;
+
+end.

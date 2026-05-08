@@ -4,7 +4,7 @@ object TCliente: TTCliente
   Align = alCustom
   BorderIcons = [biSystemMenu]
   Caption = 'Manuten'#231'ao de Clientes...'
-  ClientHeight = 542
+  ClientHeight = 550
   ClientWidth = 884
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -12,14 +12,17 @@ object TCliente: TTCliente
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  KeyPreview = True
   OldCreateOrder = False
   Position = poScreenCenter
+  OnKeyDown = FormKeyDown
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object RG: TDBGrid
     AlignWithMargins = True
-    Left = 1094
-    Top = 1509
+    Left = 1196
+    Top = 1611
     Width = 578
     Height = 391
     Align = alCustom
@@ -38,9 +41,9 @@ object TCliente: TTCliente
     Height = 81
     Align = alTop
     TabOrder = 1
-    object Label1: TLabel
+    object Lab1: TLabel
       Left = 357
-      Top = 58
+      Top = 53
       Width = 90
       Height = 13
       Caption = 'N'#186' de Registros:'
@@ -51,9 +54,9 @@ object TCliente: TTCliente
       Font.Style = [fsBold]
       ParentFont = False
     end
-    object Label2: TLabel
+    object LabNumeroRegistro: TLabel
       Left = 452
-      Top = 58
+      Top = 53
       Width = 7
       Height = 13
       Caption = '0'
@@ -66,15 +69,15 @@ object TCliente: TTCliente
     end
     object DBNavigator1: TDBNavigator
       Left = 8
-      Top = 28
-      Width = 184
-      Height = 25
+      Top = 15
+      Width = 216
+      Height = 51
       VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast]
       TabOrder = 0
     end
-    object RadioGroup1: TRadioGroup
+    object RadioGroup: TRadioGroup
       Left = 616
-      Top = 10
+      Top = 7
       Width = 258
       Height = 65
       Caption = '  Filtrar por... '
@@ -85,28 +88,37 @@ object TCliente: TTCliente
         'Inativo'
         'Todos')
       TabOrder = 1
+      OnClick = RadioGroupClick
     end
   end
   object Panel2: TPanel
     Left = 0
-    Top = 450
+    Top = 458
     Width = 884
     Height = 46
     Align = alBottom
     TabOrder = 2
+    object lbPesquisa: TLabel
+      Left = 10
+      Top = 5
+      Width = 230
+      Height = 13
+      Caption = 'Digite um Nome ou * para todos e tecle ENTER. '
+    end
     object edPesquisa: TEdit
       Left = 8
       Top = 19
       Width = 731
       Height = 21
       TabOrder = 0
+      OnKeyPress = edPesquisaKeyPress
     end
     object btnLimpar: TBitBtn
       Left = 745
       Top = 6
       Width = 129
       Height = 34
-      Caption = 'Limpar'
+      Caption = 'Limpar [F6]'
       Glyph.Data = {
         76010000424D7601000000000000760000002800000020000000100000000100
         0400000000000001000000000000000000001000000000000000000000000000
@@ -121,12 +133,16 @@ object TCliente: TTCliente
         BBB35555F55555575F555550555555550BBB55575555555575F5555555555555
         50BB555555555555575F555555555555550B5555555555555575}
       NumGlyphs = 2
+      ParentShowHint = False
+      ShowHint = False
       TabOrder = 1
+      OnClick = btnLimparClick
+      OnKeyDown = btnLimparKeyDown
     end
   end
   object Panel3: TPanel
     Left = 0
-    Top = 496
+    Top = 504
     Width = 884
     Height = 46
     Align = alBottom
@@ -136,15 +152,16 @@ object TCliente: TTCliente
       Top = 6
       Width = 110
       Height = 34
-      Caption = 'Fechar'
+      Caption = 'Fechar [ESC]'
       TabOrder = 0
+      OnClick = btnFecharClick
     end
-    object BitBtn3: TBitBtn
+    object BtnExcluir: TBitBtn
       Left = 649
       Top = 6
       Width = 110
       Height = 34
-      Caption = 'Excluir'
+      Caption = 'Excluir [F8]'
       Glyph.Data = {
         36030000424D3603000000000000360000002800000010000000100000000100
         18000000000000030000C40E0000C40E00000000000000000000FFFFFFFFFFFF
@@ -173,39 +190,14 @@ object TCliente: TTCliente
         90FFD09F6F6F6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
         FFFFA0DFF0A0DFF0A0DFF0FFCF90FFCF90FFCF90FFFFFFFFFFFF}
       TabOrder = 1
+      OnClick = BtnExcluirClick
     end
-    object BitBtn4: TBitBtn
-      Left = 535
+    object BtnEditar: TBitBtn
+      Left = 533
       Top = 6
       Width = 110
       Height = 34
-      Caption = 'Cancelar'
-      Glyph.Data = {
-        DE010000424DDE01000000000000760000002800000024000000120000000100
-        0400000000006801000000000000000000001000000000000000000000000000
-        8000008000000080800080000000800080008080000080808000C0C0C0000000
-        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
-        333333333333333333333333000033337733333333333333333F333333333333
-        0000333999733333973333333377F333333F3333000033399997333999733333
-        37F37F333F77F33300003339999973999997333337F337F3F7337F3300003333
-        999997999997333337F3337F733337F3000033333999999999733333337F3337
-        3333F7330000333333999999973333333337F333333F73330000333333399999
-        7333333333337F3333373333000033333339999973333333333337F333733333
-        00003333339999997333333333333733337F3333000033333999979997333333
-        33337333337F333300003333999973999973333333373337F337F33300003333
-        9997333999973333337F33737F337F33000033333993333399993333337FF733
-        37F337F300003333333333333999333333377333337FFF730000333333333333
-        3333333333333333333777330000333333333333333333333333333333333333
-        0000}
-      NumGlyphs = 2
-      TabOrder = 2
-    end
-    object BitBtn5: TBitBtn
-      Left = 419
-      Top = 6
-      Width = 110
-      Height = 34
-      Caption = 'Editar'
+      Caption = 'Editar [F4]'
       Glyph.Data = {
         36030000424D3603000000000000360000002800000010000000100000000100
         18000000000000030000C40E0000C40E00000000000000000000FFFFFFFFFFFF
@@ -233,15 +225,15 @@ object TCliente: TTCliente
         007F4F008F5F000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
         FFFFFFFFFFFFFFFFFFFFFFFFFF000000000000000000000000FFFFFFFFFFFFFF
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-      TabOrder = 3
-      OnClick = BitBtn5Click
+      TabOrder = 2
+      OnClick = BtnEditarClick
     end
-    object BitBtn6: TBitBtn
-      Left = 163
+    object BtnInserir: TBitBtn
+      Left = 304
       Top = 6
       Width = 110
       Height = 34
-      Caption = 'Inserir'
+      Caption = 'Inserir [F2]'
       Glyph.Data = {
         36030000424D3603000000000000360000002800000010000000100000000100
         18000000000000030000C40E0000C40E00000000000000000000FFFFFFFFFFFF
@@ -269,15 +261,15 @@ object TCliente: TTCliente
         FFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-      TabOrder = 4
-      OnClick = BitBtn6Click
+      TabOrder = 3
+      OnClick = BtnInserirClick
     end
-    object BitBtn7: TBitBtn
+    object BtnTransferir: TBitBtn
       Left = 8
       Top = 6
       Width = 110
       Height = 34
-      Caption = 'Transferir'
+      Caption = 'Transferir [F12]'
       Glyph.Data = {
         36060000424D3606000000000000360000002800000020000000100000000100
         18000000000000060000120B0000120B00000000000000000000800080800080
@@ -330,56 +322,150 @@ object TCliente: TTCliente
         8080008080008080008080008080008080008080008080008080008080008080
         0080800080800080800080800080800080800080800080800080}
       NumGlyphs = 2
-      TabOrder = 5
+      TabOrder = 4
+      Visible = False
     end
-    object BitBtn1: TBitBtn
-      Left = 279
+    object Btnconsultar: TBitBtn
+      Left = 418
       Top = 6
       Width = 110
       Height = 34
-      Caption = 'consultar'
+      Caption = 'Consultar [F3]'
       Glyph.Data = {
         36030000424D3603000000000000360000002800000010000000100000000100
-        18000000000000030000C40E0000C40E00000000000000000000FFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000000000FFFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00000000
-        00002F2F2F000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFF000000000000303030606060303030404040000000000000FFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000000000003F3F3F60606030303040
-        40408080803F3F3F3F3F3F000000000000FFFFFFFFFFFFFFFFFF000000000000
-        3F3F3F6F6F6F3030304F4F4F9F9F9F9F9F9F9090908F8F8F3030303030300000
-        00000000FFFFFFFFFFFF0000004F4F4F3030304F4F4FAFAFAFAFAFAFAFAFAFA0
-        A0A09090909090908080803030302F2F2F000000000000FFFFFF0000005F5F5F
-        B0B0B0C0C0C0BFBFBFB0B0B0AFAFAFA0A0A09F9F9F8F8F8F8F8F8F7F7F7F2F2F
-        2F2F2F2F000000000000000000303030D0D0D0CFCFCFC0C0C0BFBFBFB0B0B0AF
-        AFAF9F9F9FA08F80B05F4F9F6F607070702F2F2F2F2F2F000000FFFFFF000000
-        303030D0D0D0CFCFCF8F8F8F5050504F4040B05F40BF6F5F9F90908F8F8F8080
-        807F7F7F1F1F1F000000FFFFFFFFFFFF000000303030909090204F3FBFBFBF50
-        5050A09090A0A0A09090908080808080807070703F3F3F000000FFFFFFFFFFFF
-        00000000000000402F008F5F3FB08F707070B0B0B0A0A0A09F9F9F8080803F3F
-        3F000000000000FFFFFFFFFFFF00000000000000402F008F5F00B070009F6090
-        9090BFBFBFA0A0A0404040000000000000FFFFFFFFFFFFFFFFFF000000000000
-        00402F008F5F00B070009F60303030BFBFBF505050000000000000FFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFF000000002F1F008F5F00B070009F6000000000000000
-        0000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000000000
-        007F4F008F5F000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFF000000000000000000000000FFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-      TabOrder = 6
-      OnClick = BitBtn6Click
+        1800000000000003000000000000000000000000000000000000FF00FF4A667C
+        BE9596FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
+        FFFF00FFFF00FFFF00FF6B9CC31E89E84B7AA3C89693FF00FFFF00FFFF00FFFF
+        00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF4BB4FE51B5FF
+        2089E94B7AA2C69592FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
+        FFFF00FFFF00FFFF00FFFF00FF51B7FE51B3FF1D87E64E7AA0CA9792FF00FFFF
+        00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+        51B7FE4EB2FF1F89E64E7BA2B99497FF00FFFF00FFFF00FFFF00FFFF00FFFF00
+        FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF52B8FE4BB1FF2787D95F6A76FF
+        00FFB0857FC09F94C09F96BC988EFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+        FF00FFFF00FF55BDFFB5D6EDBF9D92BB9B8CE7DAC2FFFFE3FFFFE5FDFADAD8C3
+        B3B58D85FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFCEA795FD
+        EEBEFFFFD8FFFFDAFFFFDBFFFFE6FFFFFBEADDDCAE837FFF00FFFF00FFFF00FF
+        FF00FFFF00FFFF00FFFF00FFC1A091FBDCA8FEF7D0FFFFDBFFFFE3FFFFF8FFFF
+        FDFFFFFDC6A99CFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFC1A091FEE3ACF1
+        C491FCF2CAFFFFDDFFFFE4FFFFF7FFFFF7FFFFE9EEE5CBB9948CFF00FFFF00FF
+        FF00FFFF00FFFF00FFC2A191FFE6AEEEB581F7DCAEFEFDD8FFFFDFFFFFE3FFFF
+        E4FFFFE0F3ECD2BB968EFF00FFFF00FFFF00FFFF00FFFF00FFBC978CFBE7B7F4
+        C791F2C994F8E5B9FEFCD8FFFFDDFFFFDCFFFFE0E2D2BAB68E86FF00FFFF00FF
+        FF00FFFF00FFFF00FFFF00FFD9C3A9FFFEE5F7DCB8F2C994F5D4A5FAE8BDFDF4
+        C9FDFBD6B69089FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFB58D85E8
+        DEDDFFFEF2F9D8A3F4C48CF9D49FFDEAB8D0B49FB89086FF00FFFF00FFFF00FF
+        FF00FFFF00FFFF00FFFF00FFFF00FFAD827FC9AA9EEFE0B7EFDFB2E7CEACB890
+        86B89086FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
+        00FFFF00FFBA968ABB988CB79188FF00FFFF00FFFF00FFFF00FF}
+      TabOrder = 5
+      OnClick = BtnconsultarClick
+      OnKeyDown = BtnconsultarKeyDown
     end
   end
   object dbGridCliente: TDBGrid
     Left = 0
     Top = 81
     Width = 884
-    Height = 369
+    Height = 377
     Align = alClient
+    DataSource = dsCliente
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
+    ParentFont = False
+    ReadOnly = True
     TabOrder = 4
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    OnTitleClick = dbGridClienteTitleClick
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'COD_CLIENT'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        Title.Caption = 'C'#243'digo'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -12
+        Title.Font.Name = 'Tahoma'
+        Title.Font.Style = [fsBold]
+        Width = 112
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'NOME'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        Title.Caption = 'Nome'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clRed
+        Title.Font.Height = -12
+        Title.Font.Name = 'Tahoma'
+        Title.Font.Style = [fsBold]
+        Width = 417
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'RG'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -11
+        Title.Font.Name = 'Tahoma'
+        Title.Font.Style = [fsBold]
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'ATIVO'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        Title.Caption = 'Ativo'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -12
+        Title.Font.Name = 'Tahoma'
+        Title.Font.Style = [fsBold]
+        Width = 127
+        Visible = True
+      end>
+  end
+  object Qcliente: TADOQuery
+    Connection = TDMPrincipal.ADOConexao
+    CursorType = ctStatic
+    DataSource = TClientec.dsCliente
+    Parameters = <>
+    SQL.Strings = (
+      '')
+    Left = 80
+    Top = 280
+  end
+  object dsCliente: TDataSource
+    DataSet = Qcliente
+    Left = 160
+    Top = 280
   end
 end

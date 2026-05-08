@@ -1,0 +1,209 @@
+unit CLIENTE;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Buttons, Grids, DBGrids, ExtCtrls, DBCtrls,
+  CLIENTEC, DB, ADODB;
+
+type
+  TTCliente = class(TForm)
+    Panel1: TPanel;
+    Panel2: TPanel;
+    Panel3: TPanel;
+    dbGridCliente: TDBGrid;
+    edPesquisa: TEdit;
+    btnLimpar: TBitBtn;
+    btnFechar: TBitBtn;
+    BtnExcluir: TBitBtn;
+    BtnEditar: TBitBtn;
+    BtnInserir: TBitBtn;
+    BitBtn7: TBitBtn;
+    DBNavigator1: TDBNavigator;
+    RadioGroup: TRadioGroup;
+    Lab1: TLabel;
+    LabNumeroRegistro: TLabel;
+    Btnconsultar: TBitBtn;
+    dsCliente: TDataSource;
+    QCliente: TADOQuery;
+    procedure BTNINSERIRClick(Sender: TObject);
+    procedure btnConsultarClick(Sender: TObject);
+    procedure btnNameClick(Sender: TObject);
+    procedure BitBtn6Click(Sender: TObject);
+    procedure BtnEditarClick(Sender: TObject);
+    procedure btnFecharClick(Sender: TObject);
+    procedure edPesquisaKeyPress(Sender: TObject; var Key: Char);
+    procedure btnLimparClick(Sender: TObject);
+    procedure RadioGroupClick(Sender: TObject);
+    procedure LabNumeroRegistroClick(Sender: TObject);
+    procedure BtnExcluirClick(Sender: TObject);
+
+
+    private
+
+    public
+      procedure ChamaTela;
+  end;
+
+var
+  TCliente: TTCliente;
+
+implementation
+
+uses DMPrincipal,MenuPrincipal;
+{$R *.dfm}
+
+procedure TTCliente.BTNINSERIRClick(Sender: TObject);
+begin
+  TClienteC.ChamaTela;
+end;
+
+procedure TTCliente.BtnEditarClick(Sender: TObject);
+begin
+  if not Assigned(dsCliente.DataSet) or dsCliente.DataSet.IsEmpty then
+  begin
+    ShowMessage('Selecione um registro para editar!');
+    Exit;
+  end;
+
+  dsCliente.DataSet.Edit;
+
+  TClienteC.ChamaTela;
+end;
+
+
+procedure TTCliente.BtnExcluirClick(Sender: TObject);
+begin
+
+  if not QCliente.IsEmpty then
+  begin
+
+    if MessageDlg('Deseja realmente excluir o cliente selecionado?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+    begin
+
+      QCliente.Delete;
+
+
+    end;
+  end;
+end;
+
+
+procedure TTCliente.BitBtn6Click(Sender: TObject);
+begin
+    TClienteC.ChamaTela;
+end;
+
+procedure TTCliente.btnConsultarClick(Sender: TObject);
+begin
+  TClienteC.ChamaTela;
+end;
+
+procedure TTCliente.btnFecharClick(Sender: TObject);
+begin
+TMenuPrincipal.chamatela;
+ Close;
+end;
+
+procedure TTCliente.btnLimparClick(Sender: TObject);
+begin
+ EdPesquisa.Clear;
+
+
+end;
+
+procedure TTCliente.btnNameClick(Sender: TObject);
+begin
+  TClienteC.ChamaTela;
+end;
+
+procedure TTCliente.ChamaTela;
+begin
+  TCliente := TTCliente.Create(Application);
+  with TCliente do
+  begin
+    ShowModal;
+    FreeAndNil(TCliente);
+  end;
+end;
+
+
+
+
+procedure TTCliente.edPesquisaKeyPress(Sender: TObject; var Key: Char);
+var
+  vCodigo: Integer;
+begin
+  if (Key = #13) then
+  begin
+    with QCliente do
+    begin
+      Close;
+      SQL.Clear;
+      SQL.Add('SELECT COD_CLIENT, NOME,CAST(ATIVO AS INTEGER) AS ATIVO');
+      SQL.Add('FROM CLIENTE');
+      if (edPesquisa.Text = '*') then
+//      begin
+//        SQL.Add('ORDER BY NOME');
+//      end
+      else if TryStrToInt(edPesquisa.Text, vCodigo) then
+      begin
+        SQL.Add('WHERE COD_CLIENT = ' + edPesquisa.Text);
+      end
+      else if (edPesquisa.Text <> '') then
+      begin
+        SQL.Add('WHERE NOME LIKE ''%' + edPesquisa.Text + '%''');
+      end
+       else if (edPesquisa.Text <> '') then
+       BEGIN
+           SQL.Add('WHERE ATIVO = 0 ' + edPesquisa.Text );
+       END;
+
+
+      Open;
+    end;
+  end;
+end;
+
+
+
+procedure TTCliente.LabNumeroRegistroClick(Sender: TObject);
+begin
+with Qcliente do
+begin
+  close;
+  SQL.Clear;
+    SQL.Add('SELECT COUNT(*) AS TOTAL FROM CLIENTE');
+    open;
+    labNumeroRegistro.Caption := FieldByName('TOTAL').AsString;
+     close;
+     open;
+end;
+
+end;
+
+procedure TTCliente.RadioGroupClick(Sender: TObject);
+begin
+  with QCliente do
+  begin
+    Close;
+    SQL.Clear;
+    SQL.Add('SELECT COD_CLIENT, NOME, CAST(ATIVO AS INTEGER) AS ATIVO');
+    SQL.Add('FROM CLIENTE');
+    SQL.Add('WHERE 1=1');
+    if Trim(edPesquisa.Text) <> '' then
+    begin
+      SQL.Add('AND NOME LIKE ' + QuotedStr('%' + edPesquisa.Text + '%'));
+    end;
+    case RadioGroup.ItemIndex of
+      0: SQL.Add('AND ATIVO = 1');
+      1: SQL.Add('AND ATIVO = 0');
+    end;
+    Open;
+  end;
+end;
+
+
+
+end.

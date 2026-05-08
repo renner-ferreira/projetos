@@ -5,8 +5,10 @@ uses
   DMPrincipal in 'DMPrincipal.pas' {TDMPrincipal: TDataModule},
   CLIENTE in 'CLIENTE.pas' {TCliente},
   CLIENTEC in 'CLIENTEC.pas' {TCLIENTEC},
-  MenuPrincipal in 'MenuPrincipal.pas' {TMenuPrincipal};
-
+  MenuPrincipal in 'MenuPrincipal.pas' {TMenuPrincipal},
+  FORNECEDOR in 'FORNECEDOR.pas' {TFornecedores},
+  FornecedorC in 'FornecedorC.pas' {TFornecedorC},
+  Produtos in 'Produtos.pas' {TProdutos};
 
 {$R *.res}
 

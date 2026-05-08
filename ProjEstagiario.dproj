@@ -53,6 +53,18 @@
 			<DCCReference Include="CLIENTEC.pas">
 				<Form>TCLIENTEC</Form>
 			</DCCReference>
+			<DCCReference Include="MenuPrincipal.pas">
+				<Form>TMenuPrincipal</Form>
+			</DCCReference>
+			<DCCReference Include="FORNECEDOR.pas">
+				<Form>TFornecedores</Form>
+			</DCCReference>
+			<DCCReference Include="FornecedorC.pas">
+				<Form>TFornecedorC</Form>
+			</DCCReference>
+			<DCCReference Include="Produtos.pas">
+				<Form>TProdutos</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

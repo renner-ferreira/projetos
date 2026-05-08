@@ -1,0 +1,95 @@
+unit FORNECEDOR;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, StdCtrls, Buttons, DBCtrls, Grids, DBGrids, DB, ADODB;
+
+type
+  TTFornecedores = class(TForm)
+    Panel1: TPanel;
+    DBGrid1: TDBGrid;
+    DBNavigator1: TDBNavigator;
+    Lab1: TLabel;
+    Label1: TLabel;
+    RadioGroup1: TRadioGroup;
+    Panel2: TPanel;
+    painel3: TPanel;
+    lbPesquisa: TLabel;
+    edPesquisa: TEdit;
+    btnTrasferir: TBitBtn;
+    btnInserir: TBitBtn;
+    btnConsultar: TBitBtn;
+    btnEditar: TBitBtn;
+    BtnExcluir: TBitBtn;
+    BtnFechar: TBitBtn;
+    BtnLimpar: TBitBtn;
+    QFornecedor: TADOQuery;
+    dsFornecedor: TDataSource;
+    procedure btnInserirClick(Sender: TObject);
+    procedure btnEditarClick(Sender: TObject);
+  private
+    { Private declarations }
+ public
+//    procedure ChamaTelaFornecedor;
+ procedure ChamaTelafornecedor;
+  end;
+var
+  TFornecedores: TTFornecedores;
+
+implementation
+uses FornecedorC      ;
+
+{$R *.dfm}
+
+{ TTFornecedores }
+
+
+
+procedure TTFornecedores.ChamaTelafornecedor;
+begin
+
+  TFornecedorC := TTFornecedorC.Create(Self);
+  try
+
+    TFornecedorC.ShowModal;
+  finally
+    FreeAndNil(TFornecedorC);
+
+  end;
+end;
+
+procedure TTFornecedores.btnEditarClick(Sender: TObject);
+var
+
+  Codfornecedor: string;
+begin
+  if Qfornecedor.IsEmpty then
+  begin
+    ShowMessage('Nenhum cliente selecionado.');
+    Exit;
+  end;
+
+  Codfornecedor := Qfornecedor.FieldByName('COD_FORNECEDOR').AsString;
+  TFornecedorC.ChamaTelafornecedor('E', Qfornecedor.FieldByName('COD_FORNECEDOR').AsString);
+
+  with Qfornecedor do
+  begin
+    Close;
+    SQL.Clear;
+    SQL.Add('SELECT COD_FORNECEDOR, NOME_FANTASIA, CNPJ, CAST(ATIVO AS INTEGER) AS ATIVO');
+    SQL.Add('FROM FORNECEDOR');
+    SQL.Add('WHERE COD_FORNECEDOR = ' + Codfornecedor);
+    Open;
+  end;
+end;
+
+
+procedure TTFornecedores.btnInserirClick(Sender: TObject);
+begin
+  // Basta chamar o procedimento que acabamos de criar
+  TFornecedorC.ChamaTela;
+end;
+
+end.

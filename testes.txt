@@ -1,0 +1,137 @@
+procedure TTCliente.edPesquisaKeyPress(Sender: TObject; var Key: Char); 
+begin if (edPesquisa.Text = '*') and (key = #13) then
+ begin with QCliente do 
+begin
+ Close; SQL.Clear;
+ SQL.Add('SELECT COD_CLIENT, NOME, ATIVO'); 
+SQL.Add('FROM CLIENTE');
+ Open; 
+end;
+ end;
+ end;
+
+
+
+
+
+
+
+procedure TTCliente.RadioGroupClick(Sender: TObject);
+
+begin
+  with QCliente do
+ 
+ begin
+   
+ Close;
+   
+ SQL.Clear;
+   
+ SQL.Add('SELECT COD_CLIENT, NOME, CAST(ATIVO AS INTEGER) AS ATIVO');
+  
+  SQL.Add('FROM CLIENTE');
+    SQL.Add('WHERE 1=1');
+     if Trim(edPesquisa.Text) <> '' then
+  
+  begin
+    
+  SQL.Add('AND NOME LIKE ' + QuotedStr('%' + edPesquisa.Text + '%'));
+  
+  end;
+
+ 
+   // Filtro do RadioGroup
+    case RadioGroup.ItemIndex of
+      0: SQL.Add('AND ATIVO = 1'); // Selecionou Ativos
+      1: SQL.Add('AND ATIVO = 0'); // Selecionou Inativos
+      // Se for 2 ou outro, não adiciona filtro de ativo, trazendo todos
+    end;
+
+    Open;
+  end;
+end;
+
+
+
+
+
+
+
+
+
+excluir 
+
+
+procedure TForm1.btnExcluirClick(Sender: TObject);
+begin
+  // 1. Verifica se o DataSet está ativo e tem registros
+  if not cdsDados.Active or cdsDados.IsEmpty then
+  begin
+    ShowMessage('Não há registros para excluir.');
+    Exit;
+  end;
+
+  // 2. Confirmação do usuário
+  if MessageDlg('Deseja realmente excluir o registro selecionado?',
+    mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+  begin
+    try
+      // 3. Executa a exclusão
+      cdsDados.Delete;
+      
+      // 4. Aplica as mudanças (se usar ClientDataSet + Provider)
+      if cdsDados.ChangeCount > 0 then
+        cdsDados.ApplyUpdates(0);
+        
+    except
+      on E: Exception do
+        ShowMessage('Erro ao excluir: ' + E.Message);
+    end;
+  end;
+end;
+
+
+
+
+
+
+
+chama tela 
+  type
+  TClienteC = class(TForm)
+
+  public
+
+    class procedure ChamaTela(ADataSet: TDataSet);
+  end;
+
+class procedure TClienteC.ChamaTela(ADataSet: TDataSet);
+begin
+  if ADataSet.IsEmpty then Exit;
+
+
+  Application.CreateForm(TClienteC, ClienteC);
+  try
+
+    ADataSet.Edit; 
+    
+
+    if ClienteC.ShowModal = mrOk then
+    begin
+
+      if ADataSet.State in [dsEdit, dsInsert] then
+        ADataSet.Post;
+        
+      if ADataSet is TClientDataSet then
+        TClientDataSet(ADataSet).ApplyUpdates(0);
+    end
+    else
+    begin
+
+      ADataSet.Cancel;
+    end;
+  finally
+    ClienteC.Free;
+  end;
+end;
+ 
